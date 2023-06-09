@@ -1,0 +1,2 @@
+recuperer les datas des cryptos : https://api.binance.com/api/v3/klines?symbol=ETHBTC&interval=1m&limit=1000
+recuperer tout les symboles : https://api.binance.com/api/v3/exchangeInfo

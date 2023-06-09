@@ -10,10 +10,19 @@
   },
   "dependencies": {
     "autoprefixer": "10.4.14",
+    "axios": "^1.4.0",
+    "cors": "^2.8.5",
+    "got": "11",
+    "lightweight-charts": "^4.0.1",
     "next": "13.4.4",
+    "nextjs-cors": "^2.1.2",
     "postcss": "8.4.24",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "tailwindcss": "3.3.2"
-  }
+    "tailwindcss": "3.3.2",
+    "tulind": "^0.8.20"
+  },
+  "main": "index.js",
+  "author": "KevinArmache <kevinarmache@gmail.com>",
+  "license": "MIT"
 }
