@@ -6,7 +6,8 @@ import Chart from "../components/chart";
 // });
 async function getData() {
   const res = await fetch(
-    `https:api.binance.com/api/v3/klines?symbol=ETHBTC&interval=1m&limit=100`
+    `https:api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1d&limit=500`,
+    { next: { revalidate: 60 } }
   );
 
   if (!res.ok) {
@@ -18,10 +19,13 @@ async function getData() {
 
 export default async function Home() {
   const data = await getData();
+  console.log(data);
   let klinedata = {};
   if (data.length > 0) {
     klinedata = data.map((data) => ({
       time: data[0] / 1000,
+      // time: (data[0] - 60) * 1000,
+
       open: data[1] * 1,
       high: data[2] * 1,
       low: data[3] * 1,
@@ -39,34 +43,3 @@ export default async function Home() {
     </main>
   );
 }
-
-// async function getData() {
-//   const res = await fetch(
-//     `https:api.binance.com/api/v3/klines?symbol=ETHBTC&interval=1m&limit=10`
-//   );
-
-//   if (!res.ok) {
-//     // This will activate the closest `error.js` Error Boundary
-//     throw new Error("Failed to fetch data");
-//   }
-
-//   return res.json();
-// }
-
-// const chart = dynamic(() => import("../components/chart"), {
-//   ssr: false,
-// });
-
-// export default async function Home() {
-//   // const [data, setData] = useState({});
-//   const data = await getData();
-//   if (data.length > 0) {
-//     const klinedata = data.map((data) => ({
-//       time: data[0] / 1000,
-//       open: data[1] * 1,
-//       high: data[2] * 1,
-//       low: data[3] * 1,
-//       close: data[4] * 1,
-//     }));
-//     console.log(klinedata);
-//   }
